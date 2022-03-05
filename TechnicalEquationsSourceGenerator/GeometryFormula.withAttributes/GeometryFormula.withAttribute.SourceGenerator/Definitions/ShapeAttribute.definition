@@ -1,0 +1,11 @@
+﻿namespace GeometryFormula.withAttribute.SourceGenerator.Tests.TestSupport
+{
+	[System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = true)]
+	public class ShapeAttribute : System.Attribute
+	{
+		public ShapeAttribute(string name = null)
+		{
+			_name = name;
+		}
+	}
+}

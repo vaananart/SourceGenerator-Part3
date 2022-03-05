@@ -23,6 +23,16 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryFormula.Generation.
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryFormula.Generation.Tests", "GeometryFormula\GeometryFormula.Generation.Tests\GeometryFormula.Generation.Tests.csproj", "{0920479E-FE93-4AB4-8D3E-8B910A2B15EA}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "GeometryFormula.withAttributes", "GeometryFormula.withAttributes", "{9B53D0EB-1C01-4374-AC4E-1BDE304C7B54}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryFormula.withAttribute", "GeometryFormula.withAttributes\GeometryFormula.withAttribute\GeometryFormula.withAttribute.csproj", "{B5BEFF1B-858C-4831-8707-C083A933C25E}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryFormula.withAttribute.SourceGenerator", "GeometryFormula.withAttributes\GeometryFormula.withAttribute.SourceGenerator\GeometryFormula.withAttribute.SourceGenerator.csproj", "{B1BDF0F3-801E-43B9-84A0-BA4EE559B137}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryFormula.withAttribute.Tests", "GeometryFormula.withAttributes\GeometryFormula.withAttribute.Tests\GeometryFormula.withAttribute.Tests.csproj", "{5FF2AC53-4815-43C5-AAD0-17BE9FA6574A}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "GeometryFormula.withAttribute.SourceGenerator.Tests", "GeometryFormula.withAttributes\GeometryFormula.withAttribute.SourceGenerator.Tests\GeometryFormula.withAttribute.SourceGenerator.Tests.csproj", "{15524EA0-911D-4FF1-BDE9-5A46228A15FF}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -61,6 +71,22 @@ Global
 		{0920479E-FE93-4AB4-8D3E-8B910A2B15EA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0920479E-FE93-4AB4-8D3E-8B910A2B15EA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0920479E-FE93-4AB4-8D3E-8B910A2B15EA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B5BEFF1B-858C-4831-8707-C083A933C25E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B5BEFF1B-858C-4831-8707-C083A933C25E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B5BEFF1B-858C-4831-8707-C083A933C25E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B5BEFF1B-858C-4831-8707-C083A933C25E}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B1BDF0F3-801E-43B9-84A0-BA4EE559B137}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B1BDF0F3-801E-43B9-84A0-BA4EE559B137}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B1BDF0F3-801E-43B9-84A0-BA4EE559B137}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B1BDF0F3-801E-43B9-84A0-BA4EE559B137}.Release|Any CPU.Build.0 = Release|Any CPU
+		{5FF2AC53-4815-43C5-AAD0-17BE9FA6574A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{5FF2AC53-4815-43C5-AAD0-17BE9FA6574A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{5FF2AC53-4815-43C5-AAD0-17BE9FA6574A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{5FF2AC53-4815-43C5-AAD0-17BE9FA6574A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{15524EA0-911D-4FF1-BDE9-5A46228A15FF}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{15524EA0-911D-4FF1-BDE9-5A46228A15FF}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{15524EA0-911D-4FF1-BDE9-5A46228A15FF}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{15524EA0-911D-4FF1-BDE9-5A46228A15FF}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -74,6 +100,10 @@ Global
 		{B905358C-EAB4-49D8-A153-2AEEDFA40A10} = {7614A4CD-E61E-4951-9AE8-C097D1EEB9C1}
 		{A56B8E26-D788-4128-86FE-7B00329BCAD1} = {7614A4CD-E61E-4951-9AE8-C097D1EEB9C1}
 		{0920479E-FE93-4AB4-8D3E-8B910A2B15EA} = {7614A4CD-E61E-4951-9AE8-C097D1EEB9C1}
+		{B5BEFF1B-858C-4831-8707-C083A933C25E} = {9B53D0EB-1C01-4374-AC4E-1BDE304C7B54}
+		{B1BDF0F3-801E-43B9-84A0-BA4EE559B137} = {9B53D0EB-1C01-4374-AC4E-1BDE304C7B54}
+		{5FF2AC53-4815-43C5-AAD0-17BE9FA6574A} = {9B53D0EB-1C01-4374-AC4E-1BDE304C7B54}
+		{15524EA0-911D-4FF1-BDE9-5A46228A15FF} = {9B53D0EB-1C01-4374-AC4E-1BDE304C7B54}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {10FCDA07-11B1-4527-9E4F-AAA47611A4CA}
