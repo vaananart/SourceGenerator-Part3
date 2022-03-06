@@ -54,9 +54,18 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 
 			foreach (var token in matchedTokens)
 			{
-				string? name = token.ArgumentList?
-								.Arguments.FirstOrDefault()
+
+				
+				string? argument1 = token.ArgumentList?
+								.Arguments[0]?
 								.ToString().Replace("\"", String.Empty);
+
+				string? argument2 = token.ArgumentList?
+								.Arguments[1]?
+								.ToString().Replace("\"", String.Empty);
+
+				string name = argument1;
+				string areaformula = argument2;
 
 				if (!Regex.IsMatch(name, "^[a-zA-Z0-9]*$"))
 				{
@@ -70,7 +79,29 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 						{
 							name = afterEqualText;
 						}
+						else
+						{ 
+							areaformula = afterEqualText;
+						}
+					}
+				}
 
+				if (!Regex.IsMatch(areaformula, "^[a-zA-Z0-9]*$"))
+				{
+					if (areaformula.Contains("="))
+					{
+						var splittedTexts = name.Split('=');
+						var beforeEqualText = splittedTexts[0].Trim();
+						var afterEqualText = splittedTexts[1].Trim();
+
+						if (beforeEqualText == "area")
+						{
+							areaformula = afterEqualText;
+						}
+						else
+						{
+							name = afterEqualText;
+						}
 					}
 				}
 
@@ -78,9 +109,30 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 
 				string constructorContentString = string.Empty;
 				string constructorParamString = string.Empty;
+				string processingFormulaString = areaformula;
+				string privateVariablesString = string.Empty;
 				fileContent = fileContent.Replace("##CONSTRUCTOR##", $"{name}({constructorParamString})\n\t\t{{\n\t\t\t{constructorContentString}\n\t\t}}");
-				fileContent = fileContent.Replace("##AREAFORMULA##", "throw new NotImplementedException();");
-				fileContent = fileContent.Replace("##PRIVATEVARAIBLES##", String.Empty);
+
+				if (string.IsNullOrEmpty(areaformula))
+				{
+					fileContent = fileContent.Replace("##AREAFORMULA##", "throw new NotImplementedException();");
+					fileContent = fileContent.Replace("##PRIVATEVARAIBLES##", String.Empty);
+				}
+				else
+				{
+					var variables = (from character in areaformula
+									where character >= 'a' && character <= 'z'
+									select character).Distinct();
+
+					foreach (var variable in variables)
+					{
+						constructorParamString += $"double {variable},";
+						processingFormulaString = processingFormulaString.Replace(variable.ToString(), $"_{variable}");
+						privateVariablesString += $"private readonly double _{inputName};\n\t\t";
+					}
+					fileContent = fileContent.Replace("##AREAFORMULA##", areaformula);
+				}
+
 				ctx.AddSource($"{name}.g.cs", SourceText.From(fileContent, Encoding.UTF8));
 				fileContent = template;
 			}
