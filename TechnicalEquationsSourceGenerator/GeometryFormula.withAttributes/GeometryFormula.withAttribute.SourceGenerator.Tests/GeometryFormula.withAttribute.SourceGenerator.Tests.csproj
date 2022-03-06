@@ -9,9 +9,13 @@
 
   <ItemGroup>
     <None Remove="SampleInputs\FakeIShapeFactory.input" />
+    <None Remove="SampleInputs\FakeIShapeFactoryWithTwoShapes.input" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="SampleInputs\FakeIShapeFactoryWithTwoShapes.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
     <EmbeddedResource Include="SampleInputs\FakeIShapeFactory.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
