@@ -22,14 +22,14 @@ public class GeometryFormulaWithAttributeTests
     public async Task<Task> SimpleAttributeTest()
 	{
 		//Arrange
-		SyntaxTree syntaxTree = await CreateSyntaxTree("FakeIShapeFactory.input");
+		SyntaxTree syntaxTree = await CreateSyntaxTree("IShape.input");
 
 		CSharpCompilation compilation = CSharpCompilation.Create(
 				assemblyName: typeof(GeometryFormulaWithAttributeTests).Name,
 				syntaxTrees: new[] { syntaxTree }
 			);
 
-		var generator = new AreaFormulaForAreaAttributeGenerator();
+		var generator = new GeometryFormulaWithShapeAttributeGenerator();
 		GeneratorDriver driver = CSharpGeneratorDriver.Create(generator);
 
 		//Action
@@ -44,14 +44,14 @@ public class GeometryFormulaWithAttributeTests
 	public async Task<Task> SimpleAttributeWithAssignedParameterNameTest()
 	{
 		//Arrange
-		SyntaxTree syntaxTree = await CreateSyntaxTree("FakeIShapeFactoryWithAssignedParameter.input");
+		SyntaxTree syntaxTree = await CreateSyntaxTree("IShapeWithAssignedParameter.input");
 
 		CSharpCompilation compilation = CSharpCompilation.Create(
 				assemblyName: typeof(GeometryFormulaWithAttributeTests).Name,
 				syntaxTrees: new[] { syntaxTree }
 			);
 
-		var generator = new AreaFormulaForAreaAttributeGenerator();
+		var generator = new GeometryFormulaWithShapeAttributeGenerator();
 		GeneratorDriver driver = CSharpGeneratorDriver.Create(generator);
 
 		//Action
@@ -66,14 +66,14 @@ public class GeometryFormulaWithAttributeTests
 	public async Task<Task> WithTwoShapeAttributesTest()
 	{
 		//Arrange
-		SyntaxTree syntaxTree = await CreateSyntaxTree("FakeIShapeFactoryWithTwoShapes.input");
+		SyntaxTree syntaxTree = await CreateSyntaxTree("IShapeWithTwoShapes.input");
 
 		CSharpCompilation compilation = CSharpCompilation.Create(
 				assemblyName: typeof(GeometryFormulaWithAttributeTests).Name,
 				syntaxTrees: new[] { syntaxTree }
 			);
 
-		var generator = new AreaFormulaForAreaAttributeGenerator();
+		var generator = new GeometryFormulaWithShapeAttributeGenerator();
 		GeneratorDriver driver = CSharpGeneratorDriver.Create(generator);
 
 		//Action
@@ -83,6 +83,28 @@ public class GeometryFormulaWithAttributeTests
 		return Verifier.Verify(driver);
 
 	}
+
+	//[Fact]
+	//public async Task<Task> WithAreaest()
+	//{
+	//	//Arrange
+	//	SyntaxTree syntaxTree = await CreateSyntaxTree("IShapeWithArea.input");
+
+	//	CSharpCompilation compilation = CSharpCompilation.Create(
+	//			assemblyName: typeof(GeometryFormulaWithAttributeTests).Name,
+	//			syntaxTrees: new[] { syntaxTree }
+	//		);
+
+	//	var generator = new GeometryFormulaWithShapeAttributeGenerator();
+	//	GeneratorDriver driver = CSharpGeneratorDriver.Create(generator);
+
+	//	//Action
+	//	driver = driver.RunGenerators(compilation);
+
+	//	//Assert
+	//	return Verifier.Verify(driver);
+
+	//}
 
 	private static async Task<SyntaxTree> CreateSyntaxTree(string inputFileName)
 	{
@@ -102,4 +124,5 @@ public class GeometryFormulaWithAttributeTests
 		SyntaxTree syntaxTree = CSharpSyntaxTree.ParseText(SourceText.From(fileContent));
 		return syntaxTree;
 	}
+
 }

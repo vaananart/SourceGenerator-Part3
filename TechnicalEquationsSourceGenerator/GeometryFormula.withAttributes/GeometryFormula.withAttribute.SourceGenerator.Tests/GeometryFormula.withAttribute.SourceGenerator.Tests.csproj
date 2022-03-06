@@ -8,15 +8,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="SampleInputs\FakeIShapeFactory.input" />
-    <None Remove="SampleInputs\FakeIShapeFactoryWithTwoShapes.input" />
+    <None Remove="SampleInputs\IShape.input" />
+    <None Remove="SampleInputs\IShapeFactoryWithShapeFactoryAttribute.input" />
+    <None Remove="SampleInputs\IShapeWithArea.input" />
+    <None Remove="SampleInputs\IShapeWithAssignedParameter.input" />
+    <None Remove="SampleInputs\IShapeWithTwoShapes.input" />
   </ItemGroup>
 
   <ItemGroup>
-    <EmbeddedResource Include="SampleInputs\FakeIShapeFactoryWithTwoShapes.input">
+    <EmbeddedResource Include="SampleInputs\IShapeWithArea.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="SampleInputs\FakeIShapeFactory.input">
+    <EmbeddedResource Include="SampleInputs\IShapeFactoryWithShapeFactoryAttribute.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SampleInputs\IShapeWithAssignedParameter.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SampleInputs\IShapeWithTwoShapes.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SampleInputs\IShape.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

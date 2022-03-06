@@ -1,7 +1,8 @@
 ﻿namespace GeometryFormula.withAttribute.SourceGenerator.Tests.SampleInputs
 {
+	[Shape("Triangle")]
 	[Shape("Square")]
-	public class FakeIShapeFactory
+	public interface IShape
 	{
 	}
 }

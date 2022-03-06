@@ -27,11 +27,18 @@
 	</ItemGroup>	
 
   <ItemGroup>
+    <None Remove="Definitions\FactoryMethodAttribute.definition" />
     <None Remove="Definitions\ShapeAttribute.definition" />
     <None Remove="Formulas\AreaFormula.template" />
+    <None Remove="Formulas\FactoryMethod.template" />
+  </ItemGroup>	
+
+  <ItemGroup>
+    <EmbeddedResource Include="Formulas\FactoryMethod.template" />
   </ItemGroup>
 
   <ItemGroup>
+    <EmbeddedResource Include="Definitions\FactoryMethodAttribute.definition" />
     <EmbeddedResource Include="Definitions\ShapeAttribute.definition" />
     <EmbeddedResource Include="Formulas\AreaFormula.template" />
   </ItemGroup>
