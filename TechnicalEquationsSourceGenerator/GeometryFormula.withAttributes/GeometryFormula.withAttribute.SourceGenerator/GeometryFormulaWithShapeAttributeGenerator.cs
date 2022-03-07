@@ -128,7 +128,7 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 					{
 						constructorParamString += $"double {variable},";
 						processingFormulaString = processingFormulaString.Replace(variable.ToString(), $"_{variable}");
-						privateVariablesString += $"private readonly double _{inputName};\n\t\t";
+						privateVariablesString += $"private readonly double _{variable};\n\t\t";
 					}
 					fileContent = fileContent.Replace("##AREAFORMULA##", areaformula);
 				}

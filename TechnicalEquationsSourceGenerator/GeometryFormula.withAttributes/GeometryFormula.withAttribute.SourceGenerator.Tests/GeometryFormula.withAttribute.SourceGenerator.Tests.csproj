@@ -8,7 +8,10 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="SampleInputs\IShape.input" />
+    <Compile Remove="SampleInputs\IShape.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="SampleInputs\IShapeFactoryWithShapeFactoryAttribute.input" />
     <None Remove="SampleInputs\IShapeWithArea.input" />
     <None Remove="SampleInputs\IShapeWithAssignedParameter.input" />
@@ -28,7 +31,7 @@
     <EmbeddedResource Include="SampleInputs\IShapeWithTwoShapes.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="SampleInputs\IShape.input">
+    <EmbeddedResource Include="SampleInputs\IShape.cs">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>
