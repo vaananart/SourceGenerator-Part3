@@ -1,8 +1,0 @@
-﻿namespace GeometryFormula.withAttribute.SourceGenerator.Tests.SampleInputs
-{
-	[Shape("Triangle")]
-	[Shape("Square")]
-	public interface IShape
-	{
-	}
-}

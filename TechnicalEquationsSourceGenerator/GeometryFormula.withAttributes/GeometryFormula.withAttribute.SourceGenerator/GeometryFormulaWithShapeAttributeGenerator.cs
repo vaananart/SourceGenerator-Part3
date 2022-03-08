@@ -90,11 +90,11 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 				{
 					if (areaformula.Contains("="))
 					{
-						var splittedTexts = name.Split('=');
+						var splittedTexts = areaformula.Split('=');
 						var beforeEqualText = splittedTexts[0].Trim();
 						var afterEqualText = splittedTexts[1].Trim();
 
-						if (beforeEqualText == "area")
+						if (beforeEqualText == "areaFormula")
 						{
 							areaformula = afterEqualText;
 						}
@@ -111,7 +111,7 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 				string constructorParamString = string.Empty;
 				string processingFormulaString = areaformula;
 				string privateVariablesString = string.Empty;
-				fileContent = fileContent.Replace("##CONSTRUCTOR##", $"{name}({constructorParamString})\n\t\t{{\n\t\t\t{constructorContentString}\n\t\t}}");
+				//fileContent = fileContent.Replace("##CONSTRUCTOR##", $"{name}({constructorParamString})\n\t\t{{\n\t\t\t{constructorContentString}\n\t\t}}");
 
 				if (string.IsNullOrEmpty(areaformula))
 				{
@@ -129,8 +129,16 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 						constructorParamString += $"double {variable},";
 						processingFormulaString = processingFormulaString.Replace(variable.ToString(), $"_{variable}");
 						privateVariablesString += $"private readonly double _{variable};\n\t\t";
+						constructorContentString += $"_{variable} = {variable};\n\t\t\t";
 					}
-					fileContent = fileContent.Replace("##AREAFORMULA##", areaformula);
+					
+					constructorParamString = constructorParamString.TrimEnd(',');
+					constructorParamString = constructorParamString.Replace(",", ", ");
+					constructorContentString = constructorContentString.TrimEnd('\n', '\t', '\t');
+
+					fileContent = fileContent.Replace("##CONSTRUCTOR##", $"{name}({constructorParamString})\n\t\t{{\n\t\t\t{constructorContentString}\n\t\t}}");
+					fileContent = fileContent.Replace("##AREAFORMULA##", new StringBuilder().Append(processingFormulaString).Append(";").ToString());
+					fileContent = fileContent.Replace("##PRIVATEVARAIBLES##", $"{privateVariablesString}");
 				}
 
 				ctx.AddSource($"{name}.g.cs", SourceText.From(fileContent, Encoding.UTF8));
@@ -158,6 +166,8 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 			}
 
 			ctx.AddSource("SharpAttribute.g.cs", SourceText.From(fileContent));
+
+			var test = 2;
 		});
 	}
 }

@@ -1,9 +1,0 @@
-﻿namespace GeometryFormula.withAttribute.SourceGenerator.Tests.TestSupport
-{
-	[System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = false)]
-	public class FactoryMethodAttribute : System.Attribute
-	{
-		public FactoryMethodAttribute(string type)
-		{}
-	}
-}

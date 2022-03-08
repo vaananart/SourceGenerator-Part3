@@ -1,9 +1,0 @@
-﻿namespace GeometryFormula.withAttribute.SourceGenerator.Formulas
-{
-	public class ##ConcreteFactory## : ##IFactory## 
-	{
-		##ConcreteFactoryConstructor##
-
-		##FactoryMethod##
-	}
-}

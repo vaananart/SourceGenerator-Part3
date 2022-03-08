@@ -1,0 +1,8 @@
+﻿using GeometryFormula.withAttribute.SourceGenerator.Formulas;
+namespace GeometryFormula.withAttribute.SourceGenerator.Tests.SampleInputs
+{
+	[Shape(name = "Square")]
+	public class ShapeFacade
+	{
+	}
+}

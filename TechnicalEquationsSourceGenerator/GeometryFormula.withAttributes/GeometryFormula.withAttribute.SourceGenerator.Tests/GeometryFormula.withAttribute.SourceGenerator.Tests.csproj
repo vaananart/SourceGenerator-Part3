@@ -8,30 +8,27 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Compile Remove="SampleInputs\IShape.cs" />
+    <None Remove="SampleInputs\ShapeFacade.input" />
+    <None Remove="SampleInputs\ShapeFacadeWithArea.input" />
+    <None Remove="SampleInputs\ShapeFacadeWithAssignedParameter.input" />
+    <None Remove="SampleInputs\ShapeFacadeWithTwoShapeAreas.input" />
+    <None Remove="SampleInputs\ShapeFacadeWithTwoShapes.input" />
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="SampleInputs\IShapeFactoryWithShapeFactoryAttribute.input" />
-    <None Remove="SampleInputs\IShapeWithArea.input" />
-    <None Remove="SampleInputs\IShapeWithAssignedParameter.input" />
-    <None Remove="SampleInputs\IShapeWithTwoShapes.input" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <EmbeddedResource Include="SampleInputs\IShapeWithArea.input">
+    <EmbeddedResource Include="SampleInputs\ShapeFacadeWithArea.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="SampleInputs\IShapeFactoryWithShapeFactoryAttribute.input">
+    <EmbeddedResource Include="SampleInputs\ShapeFacadeWithAssignedParameter.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="SampleInputs\IShapeWithAssignedParameter.input">
+    <EmbeddedResource Include="SampleInputs\ShapeFacadeWithTwoShapeAreas.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="SampleInputs\IShapeWithTwoShapes.input">
+    <EmbeddedResource Include="SampleInputs\ShapeFacadeWithTwoShapes.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
-    <EmbeddedResource Include="SampleInputs\IShape.cs">
+    <EmbeddedResource Include="SampleInputs\ShapeFacade.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
   </ItemGroup>

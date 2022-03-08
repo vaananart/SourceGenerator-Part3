@@ -22,7 +22,7 @@ public class GeometryFormulaWithAttributeTests
     public async Task<Task> SimpleAttributeTest()
 	{
 		//Arrange
-		SyntaxTree syntaxTree = await CreateSyntaxTree("IShape.input");
+		SyntaxTree syntaxTree = await CreateSyntaxTree("ShapeFacade.input");
 
 		CSharpCompilation compilation = CSharpCompilation.Create(
 				assemblyName: typeof(GeometryFormulaWithAttributeTests).Name,
@@ -44,7 +44,7 @@ public class GeometryFormulaWithAttributeTests
 	public async Task<Task> SimpleAttributeWithAssignedParameterNameTest()
 	{
 		//Arrange
-		SyntaxTree syntaxTree = await CreateSyntaxTree("IShapeWithAssignedParameter.input");
+		SyntaxTree syntaxTree = await CreateSyntaxTree("ShapeFacadeWithAssignedParameter.input");
 
 		CSharpCompilation compilation = CSharpCompilation.Create(
 				assemblyName: typeof(GeometryFormulaWithAttributeTests).Name,
@@ -66,7 +66,7 @@ public class GeometryFormulaWithAttributeTests
 	public async Task<Task> WithTwoShapeAttributesTest()
 	{
 		//Arrange
-		SyntaxTree syntaxTree = await CreateSyntaxTree("IShapeWithTwoShapes.input");
+		SyntaxTree syntaxTree = await CreateSyntaxTree("ShapeFacadeWithTwoShapes.input");
 
 		CSharpCompilation compilation = CSharpCompilation.Create(
 				assemblyName: typeof(GeometryFormulaWithAttributeTests).Name,
@@ -85,10 +85,32 @@ public class GeometryFormulaWithAttributeTests
 	}
 
 	[Fact]
-	public async Task<Task> WithAreaest()
+	public async Task<Task> WithAreaTest()
 	{
 		//Arrange
-		SyntaxTree syntaxTree = await CreateSyntaxTree("IShapeWithArea.input");
+		SyntaxTree syntaxTree = await CreateSyntaxTree("ShapeFacadeWithArea.input");
+
+		CSharpCompilation compilation = CSharpCompilation.Create(
+				assemblyName: typeof(GeometryFormulaWithAttributeTests).Name,
+				syntaxTrees: new[] { syntaxTree }
+			);
+
+		var generator = new GeometryFormulaWithShapeAttributeGenerator();
+		GeneratorDriver driver = CSharpGeneratorDriver.Create(generator);
+
+		//Action
+		driver = driver.RunGenerators(compilation);
+
+		//Assert
+		return Verifier.Verify(driver);
+
+	}
+
+	[Fact]
+	public async Task<Task> WithTwoAreaTest()
+	{
+		//Arrange
+		SyntaxTree syntaxTree = await CreateSyntaxTree("ShapeFacadeWithTwoShapeAreas.input");
 
 		CSharpCompilation compilation = CSharpCompilation.Create(
 				assemblyName: typeof(GeometryFormulaWithAttributeTests).Name,

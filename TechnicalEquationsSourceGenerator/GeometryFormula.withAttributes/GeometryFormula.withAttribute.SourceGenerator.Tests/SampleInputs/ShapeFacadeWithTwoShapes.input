@@ -1,0 +1,9 @@
+﻿using GeometryFormula.withAttribute.SourceGenerator.Formulas;
+namespace GeometryFormula.withAttribute.SourceGenerator.Tests.SampleInputs
+{
+	[Shape("Triangle")]
+	[Shape("Square")]
+	public class ShapeFacade
+	{
+	}
+}

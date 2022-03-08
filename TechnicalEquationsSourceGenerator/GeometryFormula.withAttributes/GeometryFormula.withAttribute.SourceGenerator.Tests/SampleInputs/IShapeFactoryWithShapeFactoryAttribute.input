@@ -1,8 +1,0 @@
-﻿namespace GeometryFormula.withAttribute.SourceGenerator.Tests.SampleInputs
-{
-	[FactoryMethodAttribute(type="IShape")]
-	public interface IShapeFactory
-	{
-		IShape Create(string name);
-	}
-}
