@@ -1,12 +1,16 @@
 ﻿// using GeometryFormula.withAttribute.SourceGenerator.Formulas;
 
+
+
+using GeometryFormula.withAttribute.SourceGenerator.Formulas;
+
 namespace GeometryFormula.withAttribute;
 
 // [Shape("Trapezoid", areaFormula="((a + b) / 2.0) * h")]
 // [Shape("Parallelogram", areaFormula = "a * h")]
 // [Shape("Reactangle", areaFormula = "a * b")]
 // [Shape("Triangle", areaFormula="(b * h)/2.0")]
-// [Shape("Square", areaFormula="a * a")]
+[Shape("Square")]
 public class ShapeFacade
 {
 	// public double ForParallelogram(double a, double h) => new SourceGenerator.Formulas.Parallelogram(a, h).Area;

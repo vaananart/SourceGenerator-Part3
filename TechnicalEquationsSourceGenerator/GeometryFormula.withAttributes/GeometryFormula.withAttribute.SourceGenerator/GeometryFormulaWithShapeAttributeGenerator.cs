@@ -19,7 +19,7 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 		var attributeImplementation = context.SyntaxProvider.CreateSyntaxProvider(
 			predicate: static (s, _) =>
 			{
-				if (s is AttributeSyntax attribute)
+			if (s is AttributeSyntax attribute && attribute.Name.GetText().ToString()=="Shape")
 				{
 					var testResult = s;
 					return true;
@@ -54,8 +54,6 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 
 			foreach (var token in matchedTokens)
 			{
-
-				
 				string? argument1 = token.ArgumentList?
 								.Arguments[0]?
 								.ToString().Replace("\"", String.Empty);
@@ -165,7 +163,7 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 				fileContent = await reader.ReadToEndAsync();
 			}
 
-			ctx.AddSource("SharpAttribute.g.cs", SourceText.From(fileContent));
+			ctx.AddSource("SharpAttribute.g.cs", SourceText.From(fileContent, Encoding.UTF8));
 
 			var test = 2;
 		});

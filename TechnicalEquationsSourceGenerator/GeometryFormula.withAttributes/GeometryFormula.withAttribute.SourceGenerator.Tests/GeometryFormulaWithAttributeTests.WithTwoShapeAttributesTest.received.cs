@@ -1,4 +1,5 @@
-﻿namespace GeometryFormula.withAttribute.SourceGenerator.Formulas
+﻿//HintName: SharpAttribute.g.cs
+namespace GeometryFormula.withAttribute.SourceGenerator.Formulas
 {
 	[System.AttributeUsage(System.AttributeTargets.Class, AllowMultiple = true)]
 	public class ShapeAttribute : System.Attribute
