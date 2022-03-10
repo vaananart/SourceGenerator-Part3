@@ -54,17 +54,9 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 
 			foreach (var token in matchedTokens)
 			{
-				string? argument1 = token.ArgumentList?
-								.Arguments[0]?
-								.ToString().Replace("\"", String.Empty);
-
-				string? argument2 = token.ArgumentList?
-								.Arguments[1]?
-								.ToString().Replace("\"", String.Empty);
-
-				string name = argument1;
-				string areaformula = argument2;
-
+				var arguments = token.ArgumentList?.Arguments.AsEnumerable();
+				string name = arguments.FirstOrDefault().ToString().Replace("\"", String.Empty);
+				string areaformula = arguments.Count() > 1?arguments.ToArray()[1].ToString().Replace("\"", String.Empty):string.Empty;
 				if (!Regex.IsMatch(name, "^[a-zA-Z0-9]*$"))
 				{
 					if (name.Contains("="))
@@ -84,7 +76,7 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 					}
 				}
 
-				if (!Regex.IsMatch(areaformula, "^[a-zA-Z0-9]*$"))
+				if (!Regex.IsMatch(areaformula, "^[a-zA-Z0-9]*$") && !string.IsNullOrEmpty(areaformula))
 				{
 					if (areaformula.Contains("="))
 					{
@@ -109,7 +101,6 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 				string constructorParamString = string.Empty;
 				string processingFormulaString = areaformula;
 				string privateVariablesString = string.Empty;
-				//fileContent = fileContent.Replace("##CONSTRUCTOR##", $"{name}({constructorParamString})\n\t\t{{\n\t\t\t{constructorContentString}\n\t\t}}");
 
 				if (string.IsNullOrEmpty(areaformula))
 				{
@@ -133,11 +124,11 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 					constructorParamString = constructorParamString.TrimEnd(',');
 					constructorParamString = constructorParamString.Replace(",", ", ");
 					constructorContentString = constructorContentString.TrimEnd('\n', '\t', '\t');
-
-					fileContent = fileContent.Replace("##CONSTRUCTOR##", $"{name}({constructorParamString})\n\t\t{{\n\t\t\t{constructorContentString}\n\t\t}}");
-					fileContent = fileContent.Replace("##AREAFORMULA##", new StringBuilder().Append(processingFormulaString).Append(";").ToString());
-					fileContent = fileContent.Replace("##PRIVATEVARAIBLES##", $"{privateVariablesString}");
 				}
+
+				fileContent = fileContent.Replace("##CONSTRUCTOR##", $"{name}({constructorParamString})\n\t\t{{\n\t\t\t{constructorContentString}\n\t\t}}");
+				fileContent = fileContent.Replace("##AREAFORMULA##", new StringBuilder().Append(processingFormulaString).Append(";").ToString());
+				fileContent = fileContent.Replace("##PRIVATEVARAIBLES##", $"{privateVariablesString}");
 
 				ctx.AddSource($"{name}.g.cs", SourceText.From(fileContent, Encoding.UTF8));
 				fileContent = template;
