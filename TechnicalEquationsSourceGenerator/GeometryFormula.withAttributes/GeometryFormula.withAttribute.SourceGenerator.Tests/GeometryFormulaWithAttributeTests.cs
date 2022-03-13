@@ -128,6 +128,28 @@ public class GeometryFormulaWithAttributeTests
 
 	}
 
+	[Fact]
+	public async Task<Task> WithCombinationsTest()
+	{
+		//Arrange
+		SyntaxTree syntaxTree = await CreateSyntaxTree("ShapeFacadeWithCombinations.input");
+
+		CSharpCompilation compilation = CSharpCompilation.Create(
+				assemblyName: typeof(GeometryFormulaWithAttributeTests).Name,
+				syntaxTrees: new[] { syntaxTree }
+			);
+
+		var generator = new GeometryFormulaWithShapeAttributeGenerator();
+		GeneratorDriver driver = CSharpGeneratorDriver.Create(generator);
+
+		//Action
+		driver = driver.RunGenerators(compilation);
+
+		//Assert
+		return Verifier.Verify(driver);
+
+	}
+
 	private static async Task<SyntaxTree> CreateSyntaxTree(string inputFileName)
 	{
 		var assembly = Assembly.GetExecutingAssembly();

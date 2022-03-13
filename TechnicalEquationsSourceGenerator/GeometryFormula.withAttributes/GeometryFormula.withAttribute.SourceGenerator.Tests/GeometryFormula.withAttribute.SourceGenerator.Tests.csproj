@@ -8,9 +8,16 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="TestSupport\**" />
+    <EmbeddedResource Remove="TestSupport\**" />
+    <None Remove="TestSupport\**" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="SampleInputs\ShapeFacade.input" />
     <None Remove="SampleInputs\ShapeFacadeWithArea.input" />
     <None Remove="SampleInputs\ShapeFacadeWithAssignedParameter.input" />
+    <None Remove="SampleInputs\ShapeFacadeWithCombinations.input" />
     <None Remove="SampleInputs\ShapeFacadeWithTwoShapeAreas.input" />
     <None Remove="SampleInputs\ShapeFacadeWithTwoShapes.input" />
   </ItemGroup>
@@ -23,6 +30,9 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SampleInputs\ShapeFacadeWithTwoShapeAreas.input">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </EmbeddedResource>
+    <EmbeddedResource Include="SampleInputs\ShapeFacadeWithCombinations.input">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </EmbeddedResource>
     <EmbeddedResource Include="SampleInputs\ShapeFacadeWithTwoShapes.input">
@@ -53,10 +63,6 @@
 
 	<ItemGroup>
 	  <ProjectReference Include="..\GeometryFormula.withAttribute.SourceGenerator\GeometryFormula.withAttribute.SourceGenerator.csproj" />
-	</ItemGroup>
-
-	<ItemGroup>
-	  <Folder Include="TestSupport\" />
 	</ItemGroup>
 
 </Project>

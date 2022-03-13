@@ -6,7 +6,7 @@ namespace GeometryFormula.withAttribute;
 [Shape("Parallelogram", "a * h")]
 [Shape("Reactangle","a * b")]
 [Shape("Triangle", "(b * h)/2.0")]
-[Shape("Square", "a * a")]
+[Shape( name="Square", areaFormula = "a * a")]
 public class ShapeFacade
 {
 	public double ForParallelogram(double a, double h) => new SourceGenerator.Formulas.Parallelogram(a, h).Area;

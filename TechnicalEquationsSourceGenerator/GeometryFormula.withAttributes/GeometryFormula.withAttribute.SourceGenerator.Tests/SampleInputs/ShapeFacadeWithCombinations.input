@@ -1,0 +1,13 @@
+﻿using GeometryFormula.withAttribute.SourceGenerator.Formulas;
+namespace GeometryFormula.withAttribute.SourceGenerator.Tests.SampleInputs
+{
+	[Shape("Trapezoid", "((a + b) / 2.0) * h")]
+	[Shape("Parallelogram", "a * h")]
+	[Shape("Reactangle")]
+	[Shape("Triangle", "(b * h)/2.0")]
+	[Shape(name="Square", areaFormula="a * a")]
+	[Shape(name:"AlternateSquare", areaFormula:"a * a")]
+	public class ShapeFacade
+	{
+	}
+}

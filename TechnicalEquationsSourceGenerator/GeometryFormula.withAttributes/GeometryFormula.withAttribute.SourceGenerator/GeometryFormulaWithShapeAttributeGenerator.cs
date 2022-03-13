@@ -2,7 +2,6 @@
 using Microsoft.CodeAnalysis.CSharp.Syntax;
 using Microsoft.CodeAnalysis.Text;
 
-using System.Diagnostics;
 using System.Reflection;
 using System.Text;
 using System.Text.RegularExpressions;
@@ -155,8 +154,6 @@ public class GeometryFormulaWithShapeAttributeGenerator : IIncrementalGenerator
 			}
 
 			ctx.AddSource("SharpAttribute.g.cs", SourceText.From(fileContent, Encoding.UTF8));
-
-			var test = 2;
 		});
 	}
 }
